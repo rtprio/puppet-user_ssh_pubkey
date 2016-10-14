@@ -8,9 +8,7 @@ env:
   matrix:
     - PUPPET_VERSION="~> 3"
     - PUPPET_VERSION="~> 4"
-  gemfile:
-    - .gemfile
-    - .gemfile-18
+gemfile: .gemfile
 matrix:
   fast_finish: true
 notifications:
