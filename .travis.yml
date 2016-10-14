@@ -10,12 +10,18 @@ env:
     - PUPPET_VERSION="~> 2.7.0"
     - PUPPET_VERSION="~> 3"
     - PUPPET_VERSION="~> 4"
-gemfile: .gemfile
+  gemfile:
+    - .gemfile
+    - .gemfile-18
 matrix:
   fast_finish: true
   exclude:
     - rvm: 2.0.0
       env: PUPPET_VERSION="~> 2.7.0"
+    - rvm: 2.0.0
+      gemfile: .gemfile
+    - rvm: 2.1.9
+      gemfile: .gemfile
   include:
     - rvm: 2.1.9
       env: PUPPET_VERSION="~> 4"
