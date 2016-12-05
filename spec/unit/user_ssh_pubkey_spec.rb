@@ -11,7 +11,7 @@ def mock_pubkeys_for_user(username)
   FileTest.stubs(:exists?).with(rsa_file).returns(true)
   FileTest.stubs(:exists?).with(dsa_file).returns(false)
 
-  Facter::Util::FileRead.stubs(:read).with(rsa_file) \
+  File.stubs(:read).with(rsa_file) \
     .returns("ssh-rsa #{username}_xxxlongkeyherexxx #{username}@zeus")
 end
 
@@ -47,7 +47,7 @@ describe 'Facter::Util::Fact' do
       comment = "foo bar baz"
       mock_pubkeys_for_user('jensenb')
 
-      Facter::Util::FileRead.stubs(:read).with('/u/jensenb/.ssh/id_rsa.pub') \
+      File.stubs(:read).with('/u/jensenb/.ssh/id_rsa.pub') \
         .returns("ssh-rsa jensenb_xxxlongkeyherexxx #{comment}")
 
       Facter::UserSshPubkey.add_facts_for_user('jensenb')
